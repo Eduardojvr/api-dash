@@ -4,7 +4,6 @@ import { Metric } from '@prisma/client';
 function makeMetric(overrides: Partial<Metric>): Metric {
   return {
     id: overrides.id ?? 1,
-    name: overrides.name ?? 'm1',
     category: overrides.category ?? 'cat',
     value: overrides.value ?? 10,
     timestamp: overrides.timestamp ?? new Date()
@@ -34,7 +33,7 @@ describe('formatters', () => {
   });
 
   test('formatForBar aggregates by name', () => {
-    const data = [makeMetric({ name: 'x', value: 1 }), makeMetric({ name: 'x', value: 4 }), makeMetric({ name: 'y', value: 2 })];
+    const data = [makeMetric({ category: 'x', value: 1 }), makeMetric({ category: 'x', value: 4 }), makeMetric({ category: 'y', value: 2 })];
     const out = formatForBar(data);
     expect(out.labels).toContain('x');
     expect(out.values).toContain(5);

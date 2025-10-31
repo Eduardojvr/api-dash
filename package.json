@@ -13,7 +13,7 @@
     "lint": "eslint . --ext .ts"
   },
   "dependencies": {
-    "@prisma/client": "^5.0.0",
+    "@prisma/client": "^5.22.0",
     "date-fns": "^2.30.0",
     "dotenv": "^17.2.3",
     "express": "^4.18.2",

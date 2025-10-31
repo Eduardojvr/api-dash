@@ -1,0 +1,77 @@
+openapi: 3.0.3
+info:
+  title: API Dinâmica para Dashboards
+  version: 1.0.0
+  description: API para gerenciar e consultar métricas de gráficos.
+
+servers:
+  - url: http://localhost:3000
+    description: Servidor local
+
+paths:
+  /api/charts:
+    get:
+      summary: Retorna dados para gráficos
+      parameters:
+        - in: query
+          name: chartType
+          schema:
+            type: string
+          required: true
+          description: Tipo de gráfico (pie, line, bar)
+        - in: query
+          name: startDate
+          schema:
+            type: string
+            format: date-time
+          required: true
+          description: Data de início
+        - in: query
+          name: endDate
+          schema:
+            type: string
+            format: date-time
+          required: true
+          description: Data de fim
+        - in: query
+          name: groupBy
+          schema:
+            type: string
+          required: false
+      responses:
+        '200':
+          description: Dados do gráfico retornados com sucesso
+        '400':
+          description: Parâmetros inválidos
+        '500':
+          description: Erro interno do servidor
+
+    post:
+      summary: Cria um novo registro de métrica
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - category
+                - value
+              properties:
+                category:
+                  type: string
+                  example: Vendas
+                value:
+                  type: number
+                  example: 120.5
+                timestamp:
+                  type: string
+                  format: date-time
+                  example: 2025-10-30T14:00:00Z
+      responses:
+        '201':
+          description: Métrica criada com sucesso
+        '400':
+          description: Requisição inválida (campos ausentes ou incorretos)
+        '500':
+          description: Erro interno do servidor

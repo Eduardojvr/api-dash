@@ -24,3 +24,19 @@ export async function getChartData(options: {
 
   return formatByChartType(chartType, metrics);
 }
+
+export async function saveMetricData(data: {
+  category: string;
+  value: number;
+  timestamp?: Date;
+}) {
+  const metric = await prisma.metric.create({
+    data: {
+      category: data.category,
+      value: data.value,
+      timestamp: data.timestamp ?? new Date(),
+    },
+  });
+
+  return metric;
+}
