@@ -82,7 +82,7 @@ describe('chartFormatter - additional tests', () => {
         const result = formatForLine(metrics);
         expect(result.type).toBe('line');
         expect(result.labels).toEqual(['2024-01-01', '2024-01-02']);
-        expect(result.datasets[0].data).toEqual([15, 3]); // 7 + 8 = 15 for 2024-01-01
+        expect(result.datasets[0].data).toEqual([15, 3]);
     });
 
     it('formatForLine retorna estruturas vazias quando não há métricas', () => {
@@ -103,7 +103,7 @@ describe('chartFormatter - additional tests', () => {
         expect(result.type).toBe('pie');
         expect(result.labels.length).toBe(result.values.length);
         const total = (result.values as number[]).reduce((s, v) => s + v, 0);
-        expect(total).toBe(20); // 4 + 6 + 10
+        expect(total).toBe(20);
     });
 
     it('formatForPie e formatForBar retornam arrays vazios quando input é vazio', () => {
