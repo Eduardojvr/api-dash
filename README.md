@@ -8,6 +8,7 @@ API REST construída para **gerenciar e consultar métricas de gráficos** de fo
 
 - **Node.js**
 - **Express**
+- **Jest**
 - **Swagger (OpenAPI 3.0.3)**
 - **Docker & Docker Compose**
 - **Prisma**
@@ -34,10 +35,10 @@ Retorna dados para gráficos com base nos parâmetros de consulta.
 
 | Parâmetro | Tipo | Obrigatório | Descrição |
 |------------|------|-------------|------------|
-| `chartType` | `string` | ✅ | Tipo de gráfico (`pie`, `line`, `bar`) |
-| `startDate` | `string` (date-time) | ✅ | Data inicial do período |
-| `endDate` | `string` (date-time) | ✅ | Data final do período |
-| `groupBy` | `string` | ❌ | Agrupamento opcional (ex: `categoria`, `mês`) |
+| `chartType` | `string` | Sim | Tipo de gráfico (`pie`, `line`, `bar`) |
+| `startDate` | `string` (date-time) | Sim | Data inicial do período |
+| `endDate` | `string` (date-time) | Sim | Data final do período |
+| `groupBy` | `string` | Não | Agrupamento opcional (ex: `categoria`, `mês`) |
 
 #### 🔸 Exemplo de Requisição
 ```bash
@@ -110,28 +111,9 @@ Content-Type: application/json
 
 ---
 
-## 🐳 Executando com Docker
-
-### 1️⃣ Construir a Imagem
-```bash
-docker build -t api-dinamica-dashboard .
-```
-
-### 2️⃣ Executar o Container
-```bash
-docker run -p 3000:3000 api-dinamica-dashboard
-```
-
-### 3️⃣ Acessar a API
-```
-http://localhost:3000
-```
-
----
-
 ## 🧱 Usando Docker Compose
 
-Se preferir usar o **docker-compose.yml**, basta rodar:
+ basta rodar:
 
 ```bash
 docker-compose up --build
@@ -145,6 +127,20 @@ docker-compose down
 ```
 
 ---
+## 🧱 Testes unitários e de integração
+
+Basta rodar:
+
+```
+npm i
+```
+
+Depois
+
+```
+npm run test
+```
+---
 
 ## 🧭 Documentação Swagger
 
@@ -157,12 +153,12 @@ http://localhost:3000/api-docs
 
 ## 🧪 Exemplos de Uso via cURL
 
-### Criar Métrica
+### Criar 
 ```bash
 curl -X POST http://localhost:3000/api/charts -H "Content-Type: application/json" -d '{"category":"Vendas","value":250.75,"timestamp":"2025-10-30T10:00:00Z"}'
 ```
 
-### Consultar Gráficos
+### Consultar 
 ```bash
 curl "http://localhost:3000/api/charts?chartType=pie&startDate=2025-10-01T00:00:00Z&endDate=2025-10-31T23:59:59Z"
 ```

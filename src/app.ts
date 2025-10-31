@@ -18,7 +18,6 @@ const swaggerDocument = yaml.parse(file);
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 
-// Middleware de erro
 app.use(errorHandler);
 
 export default app;
