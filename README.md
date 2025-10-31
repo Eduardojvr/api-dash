@@ -1,10 +1,10 @@
-# 📊 API Dinâmica para Dashboards
+# API Dinâmica para Dashboards
 
 API REST construída para **gerenciar e consultar métricas de gráficos** de forma dinâmica, permitindo alimentar dashboards com dados em tempo real.
 
 ---
 
-## 🚀 Tecnologias Utilizadas
+## Tecnologias Utilizadas
 
 - **Node.js**
 - **Express**
@@ -16,7 +16,7 @@ API REST construída para **gerenciar e consultar métricas de gráficos** de fo
 
 ---
 
-## 🧩 Estrutura da API
+## Estrutura da API
 
 **Base URL:**
 ```
@@ -25,13 +25,13 @@ http://localhost:3000
 
 ---
 
-## 📈 Endpoints
+## Endpoints
 
 ### **GET /api/charts**
 
 Retorna dados para gráficos com base nos parâmetros de consulta.
 
-#### 🔹 Parâmetros de Query
+#### Parâmetros de Query
 
 | Parâmetro | Tipo | Obrigatório | Descrição |
 |------------|------|-------------|------------|
@@ -40,12 +40,12 @@ Retorna dados para gráficos com base nos parâmetros de consulta.
 | `endDate` | `string` (date-time) | Sim | Data final do período |
 | `groupBy` | `string` | Não | Agrupamento opcional (ex: `categoria`, `mês`) |
 
-#### 🔸 Exemplo de Requisição
+#### Exemplo de Requisição
 ```bash
 GET http://localhost:3000/api/charts?chartType=bar&startDate=2025-10-01T00:00:00Z&endDate=2025-10-31T23:59:59Z
 ```
 
-#### 🔹 Respostas Possíveis
+#### Respostas Possíveis
 
 | Código | Descrição |
 |--------|------------|
@@ -53,7 +53,7 @@ GET http://localhost:3000/api/charts?chartType=bar&startDate=2025-10-01T00:00:00
 | `400` | Parâmetros inválidos |
 | `500` | Erro interno do servidor |
 
-#### 🔸 Exemplo de Resposta (200)
+#### Exemplo de Resposta (200)
 ```json
 [
   { "category": "Janeiro", "value": 150 },
@@ -68,15 +68,15 @@ GET http://localhost:3000/api/charts?chartType=bar&startDate=2025-10-01T00:00:00
 
 Cria um novo registro de métrica.
 
-#### 🔹 Corpo da Requisição (`application/json`)
+#### Corpo da Requisição (`application/json`)
 
 | Campo | Tipo | Obrigatório | Descrição |
 |--------|------|-------------|------------|
-| `category` | `string` | ✅ | Categoria da métrica (ex: `Vendas`, `Lucro`) |
-| `value` | `number` | ✅ | Valor numérico da métrica |
-| `timestamp` | `string` (date-time) | ❌ | Data e hora do registro (default: atual) |
+| `category` | `string` | Sim | Categoria da métrica (ex: `Vendas`, `Lucro`) |
+| `value` | `number` | Sim | Valor numérico da métrica |
+| `timestamp` | `string` (date-time) | Não | Data e hora do registro (default: atual) |
 
-#### 🔸 Exemplo de Requisição
+#### Exemplo de Requisição
 ```bash
 POST http://localhost:3000/api/charts
 Content-Type: application/json
@@ -88,7 +88,7 @@ Content-Type: application/json
 }
 ```
 
-#### 🔹 Respostas Possíveis
+#### Respostas Possíveis
 
 | Código | Descrição |
 |--------|------------|
@@ -96,7 +96,7 @@ Content-Type: application/json
 | `400` | Requisição inválida (campos ausentes ou incorretos) |
 | `500` | Erro interno do servidor |
 
-#### 🔸 Exemplo de Resposta (201)
+#### Exemplo de Resposta (201)
 ```json
 {
   "message": "Métrica criada com sucesso",
@@ -111,7 +111,7 @@ Content-Type: application/json
 
 ---
 
-## 🧱 Usando Docker Compose
+## Usando Docker Compose
 
  basta rodar:
 
@@ -127,7 +127,7 @@ docker-compose down
 ```
 
 ---
-## 🧱 Testes unitários e de integração
+## Testes unitários e de integração
 
 Basta rodar:
 
@@ -142,7 +142,7 @@ npm run test
 ```
 ---
 
-## 🧭 Documentação Swagger
+## Documentação Swagger
 
 Acesse a documentação interativa em:
 
@@ -151,7 +151,7 @@ http://localhost:3000/api-docs
 ```
 ---
 
-## 🧪 Exemplos de Uso via cURL
+## Exemplos de Uso via cURL
 
 ### Criar 
 ```bash
